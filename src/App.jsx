@@ -1,15 +1,12 @@
-"use client"; // this is a client component 
-import styles from '../style';
-import dynamic from 'next/dynamic';
-import { Hero, Stats, Business, Billing, CTA, Footer } from '../components';
+// src/App.jsx
 
+import styles from './style';
 
-const Navbar = dynamic(() => import('../components/Navbar'), 
-{ssr: false, loading: () => <p>Loading...</p>, 
-})
+import {Navbar, Hero, Stats, Business, Billing, CTA, Footer } from './components';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import BlogPage from './pages/blog';
 
-export default () => (
-
+const App = () => (
   <div className='bg-primary w-full overflow-hidden'>
     <div className={`${styles.paddingX} ${styles.flexCenter}`}>
       <div className={`${styles.boxWidth}`}>
@@ -25,14 +22,18 @@ export default () => (
 
     <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
       <div className={`${styles.boxWidth}`}>
-        <Stats/> 
-        <Business/> 
-        <Billing/>  
-        <CTA/> 
-        <Footer/>
+        <Router>
+          <Switch>
+            <Route exact path="/blog" component={BlogPage} />
+          </Switch>
+        </Router>
+        <Stats/>
+        <Business/>
+        <Billing/>
+        <CTA/>
       </div>
     </div>
   </div>
-  );
+);
 
-  
+export default App;
