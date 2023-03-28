@@ -1,17 +1,21 @@
 import React from 'react';
 import Image from 'next/image';
-import styles from '../style';
+import { defaultStyles } from '@/utils/default_styles';
 import { footerLinks, socialMedia } from '../constants';
 import { logo } from '../assets';
 
 const Footer = () => (
-  <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
-    <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
+  <section
+    className={`${defaultStyles.flexCenter} ${defaultStyles.paddingY} flex-col`}
+  >
+    <div
+      className={`${defaultStyles.flexStart} md:flex-row flex-col mb-8 w-full`}
+    >
       <div className="flex-1 flex flex-col justify-start mr-10">
         <div className="relative w-[266px] h-auto">
           <Image src={logo} alt="KEEZ" layout="fill" objectFit="contain" />
         </div>
-        <p className={`${styles.paragraph} mt-4 max-w-[310px]`}>
+        <p className={`${defaultStyles.paragraph} mt-4 max-w-[310px]`}>
           We strive for a rich culture of productive builders assisting in
           creating network effect for the LUKSO blockchain.
         </p>
@@ -55,7 +59,12 @@ const Footer = () => (
               index !== socialMedia.length - 1 ? 'mr-6' : 'mr-0'
             }`}
           >
-            <Image src={social.icon} alt={social.id} layout="fill" objectFit="contain" />
+            <Image
+              src={social.icon}
+              alt={social.id}
+              layout="fill"
+              objectFit="contain"
+            />
           </div>
         ))}
       </div>

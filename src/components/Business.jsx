@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { features } from '../constants';
-import styles, { layout } from '../style';
+import { defaultStyles, defaultLayout } from '@/utils/default_styles';
 import Button from './Button';
 
 const FeatureCard = ({ icon, title, content, index }) => (
@@ -10,7 +10,9 @@ const FeatureCard = ({ icon, title, content, index }) => (
       index !== features.length - 1 ? 'mb-6' : 'mb-0'
     } feature-card`}
   >
-    <div className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-dimBlue`}>
+    <div
+      className={`w-[64px] h-[64px] rounded-full ${defaultStyles.flexCenter} bg-dimBlue`}
+    >
       <div className="relative w-[50%] h-[50%]">
         <Image src={icon} alt="icon" layout="fill" objectFit="contain" />
       </div>
@@ -28,19 +30,22 @@ const FeatureCard = ({ icon, title, content, index }) => (
 
 const Business = () => {
   return (
-    <section id="features" className={layout.section}>
-      <div className={layout.sectionInfo}>
-        <h2 className={styles.heading2}>
+    <section id="features" className={defaultLayout.section}>
+      <div className={defaultLayout.sectionInfo}>
+        <h2 className={defaultStyles.heading2}>
           Lorem ipsum dolor , <br className="sm:block-hidden" />
           consectetur adipiscing
         </h2>
-        <p className={`${styles.paragraph} max-w-[500px] mt-5`}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        <p className={`${defaultStyles.paragraph} max-w-[500px] mt-5`}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
         </p>
         <Button styles="mt-10" />
       </div>
 
-      <div className={`${layout.sectionImg} flex-col`}>
+      <div className={`${defaultLayout.sectionImg} flex-col`}>
         {features.map((feature, index) => (
           <FeatureCard key={feature.id} {...feature} index={index} />
         ))}
